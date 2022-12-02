@@ -39,4 +39,4 @@ Content-Type: application/json
 
 ### Случайные вопросы
 GET http://localhost:8080/exam/java/amount?amount=2
-###
+

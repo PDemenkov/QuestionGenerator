@@ -3,6 +3,7 @@ package com.example.questiongenerator.service;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 
+import com.example.questiongenerator.exception.EmptySetSizeException;
 import com.example.questiongenerator.exception.QuestionNotExistException;
 import com.example.questiongenerator.model.Question;
 
@@ -15,9 +16,6 @@ import org.mockito.Mockito;
 import java.util.Random;
 
 class QuestionServiceImplTest {
-    @Mock
-    Random rnd = new Random();
-    @InjectMocks
     QuestionServiceImpl questionService = new QuestionServiceImpl();
 
 
@@ -53,9 +51,9 @@ class QuestionServiceImplTest {
         questionService.questionRemove(question2);
         assertEquals(1, questionService.getAll().size());
     }
-        @Test
-        void QuestionRemoveException() {
-            Question question2 = new Question("Question5", "Answer5");
+    @Test
+    void QuestionRemoveException() {
+        Question question2 = new Question("Question5", "Answer5");
         assertThrows(QuestionNotExistException.class,
                 () -> questionService.questionRemove(question2));
     }
@@ -74,9 +72,8 @@ class QuestionServiceImplTest {
 
     @Test
     void getRandomQuestion() {
-//
-//        Mockito.when(rnd.nextInt(Integer.MAX_VALUE)).thenReturn(1);
-////        Mockito.when(rnd.nextInt(1,52)).thenReturn(1);
+        QuestionServiceImpl questionService1 = new QuestionServiceImpl();
+        assertThrows(EmptySetSizeException.class, questionService1::getRandomQuestion);
     }
 
     @Test
@@ -85,4 +82,3 @@ class QuestionServiceImplTest {
         assertTrue((new QuestionServiceImpl()).getAll().isEmpty());
     }
 }
-

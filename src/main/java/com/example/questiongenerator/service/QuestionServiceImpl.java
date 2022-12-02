@@ -1,5 +1,6 @@
 package com.example.questiongenerator.service;
 
+import com.example.questiongenerator.exception.EmptySetSizeException;
 import com.example.questiongenerator.exception.QuestionNotExistException;
 import com.example.questiongenerator.model.Question;
 import com.example.questiongenerator.services.QuestionService;
@@ -52,6 +53,9 @@ public class QuestionServiceImpl implements QuestionService {
     public Question getRandomQuestion() {
         Question[] arrayNum = questionSet.toArray(new Question[questionSet.size()]);
         Random rnd = new Random();
+        if (questionSet.size() == 0) {
+            throw new EmptySetSizeException("Список пуст");
+        }
         int randomNum = rnd.nextInt(questionSet.size());
         return arrayNum[randomNum];
     }

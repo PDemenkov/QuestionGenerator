@@ -19,7 +19,7 @@ public class ExaminerServiceImpl implements ExamineService {
     }
 
     @Override
-    public Collection<Question> getQuestions(int amount) {
+    public Collection <Question> getQuestions(int amount) {
         Set<Question> toCopy = new HashSet<>();
         if (amount > questionService.getAll().size()) {
             throw new IllegalNumberOfQuestions("Вопросов не может быть больше, чем с списке");

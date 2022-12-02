@@ -17,4 +17,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> illegalQ(QuestionNotExistException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+
+    @ExceptionHandler(value = EmptySetSizeException.class)
+    public ResponseEntity<String> emptySize(EmptySetSizeException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 }
