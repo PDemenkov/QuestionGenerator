@@ -2,47 +2,46 @@ package com.example.questiongenerator.controller;
 
 import com.example.questiongenerator.model.Question;
 import com.example.questiongenerator.service.QuestionServiceImpl;
+import com.example.questiongenerator.services.QuestionService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/exam")
+@RequestMapping("/exam/java")
 public class QuestionController {
-    QuestionServiceImpl questionService;
+    private QuestionService questionService;
 
     public QuestionController(QuestionServiceImpl questionService) {
         this.questionService = questionService;
     }
 
-    @GetMapping("/get")
-    public Collection<Question> getSpecifiedQuestion(@RequestParam(value = "amount") int amount) {
-        return null;
+//    @PostMapping("/add")
+//    public Question addQuestion(@RequestParam(value = "question") String question,
+//                                @RequestParam(value = "answer") String answer) {
+//        return this.questionService.addQuestion(question, answer);
+//    }
+    @PostMapping("/add")
+    public Question addQuestion(@RequestBody Question question) {
+        return this.questionService.addQuestion(question);
     }
 
-    @PostMapping("/java/add")
-    public Question addQuestion(@RequestParam(value = "question") String question,
-                                @RequestParam(value = "answer") String answer) {
-        return this.questionService.addQuestion(question, answer);
-
-    }
-
-    @DeleteMapping("/java/remove")
+    @DeleteMapping("/remove")
     public Question deleteQuestions(@RequestBody Question question) {
         return this.questionService.questionRemove(question);
     }
 
-    @GetMapping("/java/find")
+    @GetMapping("/find")
     public Question findQuestion(@RequestBody Question question) {
         return questionService.find(question);
     }
 
-    @GetMapping("/java/getAll")
+    @GetMapping("/getAll")
     public Collection<Question> printAllQuestions() {
         return this.questionService.getAll();
     }
 
-    @GetMapping ("/java/randomQuestion")
+    @GetMapping("/randomQuestion")
     public Question randomQuestion() {
         return this.questionService.getRandomQuestion();
     }

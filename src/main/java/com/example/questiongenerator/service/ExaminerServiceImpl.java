@@ -12,22 +12,22 @@ import java.util.Set;
 
 @Service
 public class ExaminerServiceImpl implements ExamineService {
-    QuestionService questionService;
+    private QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
     }
 
     @Override
-    public Collection <Question> getQuestions(int amount) {
+    public Collection<Question> getQuestions(int amount) {
         Set<Question> toCopy = new HashSet<>();
         if (amount > questionService.getAll().size()) {
             throw new IllegalNumberOfQuestions("Вопросов не может быть больше, чем с списке");
         }
-        while (toCopy.size()<amount) {
+        while (toCopy.size() < amount) {
             toCopy.add(questionService.getRandomQuestion());
         }
-        return toCopy ;
+        return toCopy;
     }
 
 

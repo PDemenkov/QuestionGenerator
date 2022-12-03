@@ -1,17 +1,35 @@
 ### Добавить вопрос/ответ
-POST http://localhost:8080/exam/java/add?question=Question1&answer=Answer1
+#POST http://localhost:8080/exam/java/add?question=Question1&answer=Answer1
+#
+#### Добавить вопрос/ответ
+#POST http://localhost:8080/exam/java/add?question=Question2&answer=Answer2
+#
+#### Добавить вопрос/ответ
+#POST http://localhost:8080/exam/java/add?question=Question3&answer=Answer3
+#
+#### Добавить вопрос/ответ
+#POST http://localhost:8080/exam/java/add?question=Question4&answer=Answer4
+#
+#### Добавить вопрос/ответ
+#POST http://localhost:8080/exam/java/add?question=Question5&answer=Answer5
 
 ### Добавить вопрос/ответ
-POST http://localhost:8080/exam/java/add?question=Question2&answer=Answer2
+POST http://localhost:8080/exam/java/add
+Content-Type: application/json
+
+{
+  "question": "Question1",
+  "answer": "Answer1"
+}
 
 ### Добавить вопрос/ответ
-POST http://localhost:8080/exam/java/add?question=Question3&answer=Answer3
+POST http://localhost:8080/exam/java/add
+Content-Type: application/json
 
-### Добавить вопрос/ответ
-POST http://localhost:8080/exam/java/add?question=Question4&answer=Answer4
-
-### Добавить вопрос/ответ
-POST http://localhost:8080/exam/java/add?question=Question5&answer=Answer5
+{
+  "question": "Question2",
+  "answer": "Answer2"
+}
 
 ###Список всех попросов
 GET http://localhost:8080/exam/java/getAll
@@ -38,5 +56,4 @@ Content-Type: application/json
 }
 
 ### Случайные вопросы
-GET http://localhost:8080/exam/java/amount?amount=2
-
+GET http://localhost:8080/exam/java/get/2
