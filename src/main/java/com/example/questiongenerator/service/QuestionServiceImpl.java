@@ -10,6 +10,7 @@ import java.util.*;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
+    private final static Random RANDOM = new Random();
     private final Set<Question> questionSet = new HashSet<>();
 
     @Override
@@ -59,5 +60,14 @@ public class QuestionServiceImpl implements QuestionService {
         int randomNum = rnd.nextInt(questionSet.size());
         return arrayNum[randomNum];
     }
+
+//    @Override
+//    public Question getRandomQuestion() {
+//        return questionSet
+//                .stream()
+//                .skip(RANDOM.nextInt(0, questionSet.size()))
+//                .findFirst()
+//                .orElseThrow();
+//    }
 
 }

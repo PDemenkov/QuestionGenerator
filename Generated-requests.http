@@ -56,4 +56,4 @@ Content-Type: application/json
 }
 
 ### Случайные вопросы
-GET http://localhost:8080/exam/java/get/2
+GET http://localhost:8080/exam/java/get/100
